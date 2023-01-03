@@ -12,6 +12,23 @@
   - Code légé (qui utilise le moins de ressource)
   - Code lisible
 
+## Comment tester la rapidité ?
+
+- performance.now()
+- console.Time()
+
+(Voir le fichier Javascript)
+
+## Que juger de la rapidité ?
+
+- L'insertion
+- Le retrait
+- La recherche
+- L'acces aux données
+
+1. Les objets sont rapides dans l'ensemble de ces domaines
+2. Les tableaux sont rapides .......................................?????
+
 ## Les design patterns :
 
 Il existe trois grands types de design patterns :
