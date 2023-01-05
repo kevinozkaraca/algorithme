@@ -27,7 +27,7 @@
 - L'acces aux données
 
 1. Les objets sont rapides dans l'ensemble de ces domaines
-2. Les tableaux sont rapides .......................................?????
+2. Les tableaux sont rapides pour l'acces aux données mais peuvent etre lents lors de l'insertion ou le retrait
 
 ## Les design patterns :
 
@@ -44,3 +44,23 @@ Il existe trois grands types de design patterns :
 - Un design pattern est relatif à la création, la manipulation et/ou la communication entre un ou plusieurs objets. Dans ce cas, vous travaillez sur un sujet assez précis : la communication avec une API, par exemple.
 
 - Un design d’architecture est un ensemble de règles et de conventions pour le design de l’application elle-même, qu’elle soit front-end ou back-end... Par exemple, quelle partie du code s’occupe de gérer les données, quelle partie s’occupe de les afficher, etc.
+
+## 01. Factory pattern
+
+- Le "Factory pattern" est un patron de conception qui consiste à déléguer la création d'objets à une classe spécialisée appelée "fabrique". L'objectif de ce patron de conception est de séparer la logique de création des objets de leur utilisation, ce qui permet de rendre le code plus flexible et modulaire.
+
+- Le "Factory pattern" est souvent utilisé lorsque l'on a besoin de créer des objets qui appartiennent à une famille de classes similaires, mais où la sous-classe concrète à instancier peut varier. La fabrique se charge de décider quelle sous-classe concrète instancier et de retourner une instance de cette sous-classe. Cela permet de centraliser la logique de création des objets et de la rendre plus modifiable.
+
+## 02. Singleton pattern
+
+- Le "Singleton pattern" est un patron de conception qui vise à garantir qu'une classe n'a qu'une seule instance et qu'il existe un point d'accès global à cette instance.
+
+- Le "Singleton pattern" est souvent utilisé lorsqu'il est nécessaire de s'assurer qu'il n'existe qu'une seule instance d'une classe, par exemple pour représenter une connexion à une base de données ou un service web, afin d'éviter d'avoir à créer de nouvelles connexions chaque fois qu'on en a besoin.
+
+## 03. Strategy Pattern
+
+- Le "Strategy Pattern" est un patron de conception qui permet de définir une famille d'algorithmes, de les encapsuler et de les rendre interchangeables. Ce patron de conception permet de sélectionner l'algorithme à utiliser à runtime et de changer facilement d'algorithme sans impacter le code utilisateur.
+
+## 04. Iterator Pattern
+
+- L' "iterator pattern" est un patron de conception de logiciel qui permet d'accéder de manière séquentielle aux éléments d'un objet agrégat, sans exposer sa représentation interne. Cela signifie que vous pouvez parcourir les éléments d'un objet agrégat sans savoir comment cet objet est organisé interne.
