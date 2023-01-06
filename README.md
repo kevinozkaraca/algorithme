@@ -64,3 +64,11 @@ Il existe trois grands types de design patterns :
 ## 04. Iterator Pattern
 
 - L' "iterator pattern" est un patron de conception de logiciel qui permet d'accéder de manière séquentielle aux éléments d'un objet agrégat, sans exposer sa représentation interne. Cela signifie que vous pouvez parcourir les éléments d'un objet agrégat sans savoir comment cet objet est organisé interne.
+
+## 05. Observer Pattern
+
+- Le patron observer (aussi connu sous le nom de patron de publication-abonnement) est un patron de conception en programmation orientée objet qui permet à un objet, appelé "sujet", de diffuser des mises à jour à un ensemble d'objets, appelés "observateurs", lorsqu'il subit un changement.
+
+- Le patron observer est utilisé pour mettre en œuvre une dépendance en "un pour plusieurs" de sorte que lorsqu'un objet change d'état, tous ses dépendants sont automatiquement notifiés et mis à jour. Cela permet de créer des systèmes modulaires et flexibles, car les observateurs peuvent être ajoutés ou supprimés dynamiquement.
+
+- Pour mettre en œuvre le patron observer, vous devez définir une interface d'observateur qui définit une méthode de mise à jour à appeler lorsque le sujet change d'état. Vous devez également définir une classe concrète d'observateur qui implémente cette interface et qui contient les comportements à exécuter lorsqu'elle est mise à jour. Enfin, vous devez définir une classe de sujet qui maintient une liste d'observateurs et qui appelle la méthode de mise à jour de chaque observateur lorsqu'elle subit un changement.
