@@ -210,11 +210,11 @@ while (iterator.hasNext()) {
   console.log(iterator.next()); // Affiche chaque nombre de 1 à 5
 }
 /* 
-------->   04.Observer Pattern
+------->   05.Observer Pattern
 */
 console.log(`...........Observer Pattern`);
 function Subject() {
-  this.observers = []; // array of observer functions
+  this.observers = []; // tableau de fonctions
 }
 
 Subject.prototype = {
@@ -249,3 +249,129 @@ subject.fire();
 
 subject.unsubscribe(Observer1);
 subject.fire();
+/* 
+------->   06.Proxy Pattern
+*/
+console.log(`...........Proxy Pattern`);
+function CryptocurrencyAPI() {
+  this.getValue = function (coin) {
+    console.log("Calling External API...");
+    switch (coin) {
+      case "Bitcoin":
+        return "$8,500";
+      case "Litecoin":
+        return "$50";
+      case "Ethereum":
+        return "$175";
+      default:
+        return "NA";
+    }
+  };
+}
+
+const api = new CryptocurrencyAPI();
+console.log("----------Without Proxy----------");
+console.log(api.getValue("Bitcoin"));
+console.log(api.getValue("Litecoin"));
+console.log(api.getValue("Ethereum"));
+console.log(api.getValue("Bitcoin"));
+console.log(api.getValue("Litecoin"));
+console.log(api.getValue("Ethereum"));
+
+function CryptocurrencyProxy() {
+  this.api = new CryptocurrencyAPI();
+  this.cache = {};
+
+  this.getValue = function (coin) {
+    if (this.cache[coin] == null) {
+      this.cache[coin] = this.api.getValue(coin);
+    }
+    return this.cache[coin];
+  };
+}
+
+console.log("----------With Proxy----------");
+const proxy = new CryptocurrencyProxy();
+console.log(proxy.getValue("Bitcoin"));
+console.log(proxy.getValue("Litecoin"));
+console.log(proxy.getValue("Ethereum"));
+console.log(proxy.getValue("Bitcoin"));
+console.log(proxy.getValue("Litecoin"));
+console.log(proxy.getValue("Ethereum"));
+/* 
+------->   07.Mediator Pattern
+*/
+console.log(`...........Mediator Pattern`);
+
+function Member(name) {
+  this.name = name;
+  this.chatroom = null;
+}
+
+Member.prototype = {
+  send: function (message, toMember) {
+    this.chatroom.send(message, this, toMember);
+  },
+  receive: function (message, fromMember) {
+    console.log(`${fromMember.name} to ${this.name}: ${message}`);
+  },
+};
+
+function Chatroom() {
+  this.members = {};
+}
+
+Chatroom.prototype = {
+  addMember: function (member) {
+    this.members[member.name] = member;
+    member.chatroom = this;
+  },
+  send: function (message, fromMember, toMember) {
+    toMember.receive(message, fromMember);
+  },
+};
+
+const chat = new Chatroom();
+
+const bob = new Member("Bob");
+const john = new Member("John");
+const tim = new Member("Tim");
+
+chat.addMember(bob);
+chat.addMember(john);
+chat.addMember(tim);
+
+bob.send("Hey, John", john);
+john.send("What's up, Bob", bob);
+tim.send("John, are you ok?", john);
+/* 
+------->   08.Visitor Pattern
+*/
+console.log(`...........Visitor Pattern`);
+
+function Employee(name, salary) {
+  this.name = name;
+  this.salary = salary;
+}
+
+Employee.prototype = {
+  getSalary: function () {
+    return this.salary;
+  },
+  setSalary: function (sal) {
+    this.salary = sal;
+  },
+  accept: function (visitorFunction) {
+    visitorFunction(this);
+  },
+};
+
+const devsage = new Employee("DevSage", 10000);
+console.log(devsage.getSalary());
+
+function ExtraSalary(emp) {
+  emp.setSalary(emp.getSalary() * 2);
+}
+
+devsage.accept(ExtraSalary);
+console.log(devsage.getSalary());
